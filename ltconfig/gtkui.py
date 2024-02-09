@@ -161,11 +161,10 @@ class GtkUI(Gtk3PluginBase):
 
       if widget.get_model()[path][0] and column is widget.get_column(2):
         widget.set_cursor(path, column, start_editing=True)
-        return True
+        return False
 
 
     view.connect("button-press-event", on_button_pressed)
-    view.get_selection().set_mode(gtk.SelectionMode.NONE)
     view.set_search_column(1)
 
     col = gtk.TreeViewColumn()
