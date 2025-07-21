@@ -40,10 +40,10 @@
 from setuptools import setup, find_packages
 
 __plugin_name__ = "ltConfig"
-__author__ = "Ratanak Lun"
+__author__ = "Ratanak Lun (tweaked settings profile by ambipro/zakkarry and update for Deluge 2.x by mhertz)"
 __author_email__ = "ratanakvlun@gmail.com"
-__version__ = "2.0.0"
-__url__ = "http://github.com/ratanakvlun"
+__version__ = "2.1.0"
+__url__ = "https://github.com/zakkarry/deluge-ltconfig"
 __license__ = "GPLv3"
 __description__ = "Modify libtorrent settings"
 __long_description__ = """"""

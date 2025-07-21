@@ -54,7 +54,7 @@ from .common.config.plugin import (
 )
 
 from .common.presets import (
-  LIBTORRENT_DEFAULTS, MIN_MEMORY_USAGE, HIGH_PERFORMANCE_SEED
+  LIBTORRENT_DEFAULTS, MIN_MEMORY_USAGE, HIGH_PERFORMANCE_SEED, ZAMBIPRO_PRESETS
 )
 
 
@@ -164,6 +164,8 @@ class Core(CorePluginBase):
       settings = dict(HIGH_PERFORMANCE_SEED)
     elif preset == 3:
       settings = dict(MIN_MEMORY_USAGE)
+    elif preset == 4:
+      settings = dict(ZAMBIPRO_PRESETS)
 
     for key in list(settings.keys()):
       # Presets use integer values in place of floats (for >= 1.1.x).

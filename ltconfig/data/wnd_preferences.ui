@@ -17,6 +17,9 @@
       <row>
         <col id="0" translatable="yes">Minimum Memory Usage</col>
       </row>
+      <row>
+        <col id="0" translatable="yes">zakkarrys Settings</col>
+      </row>
     </data>
   </object>
   <!-- interface-requires gtk+ 2.16 -->
