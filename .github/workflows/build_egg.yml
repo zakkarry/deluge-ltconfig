@@ -1,0 +1,41 @@
+name: Build and Publish Egg
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install setuptools wheel
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Build egg file
+        run: python setup.py bdist_egg
+
+      - name: Get egg filename
+        id: get_egg
+        run: echo "egg_file=$(ls dist/*.egg)" >> $GITHUB_OUTPUT
+
+      - name: Upload egg to release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ${{ steps.get_egg.outputs.egg_file }}
+          asset_name: ltConfig-${{ github.event.release.tag_name }}.egg
+          asset_content_type: application/octet-stream
